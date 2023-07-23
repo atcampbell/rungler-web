@@ -260,10 +260,15 @@ function attachOutports(device) {
         // Ignore message events that don't belong to an outport
         if (outports.findIndex(elt => elt.tag === ev.tag) < 0) return;
 
-        // Message events have a tag as well as a payload
-        console.log(`${ev.tag}: ${ev.payload}`);
+        if (ev.tag === 'out3') {
+            console.log('rungler', ev.payload);
+            document.getElementById("rnbo-console-readout").innerText = `${ev.tag} - rungler: ${ev.payload}`;
+        }
 
-        document.getElementById("rnbo-console-readout").innerText = `${ev.tag}: ${ev.payload}`;
+        // Message events have a tag as well as a payload
+        // console.log(`${ev.tag}: ${ev.payload}`);
+
+        // document.getElementById("rnbo-console-readout").innerText = `${ev.tag}: ${ev.payload}`;
     });
 }
 
